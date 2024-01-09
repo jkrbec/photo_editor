@@ -156,4 +156,7 @@ class App(ctk.CTk):
         resized_image = self.image.resize((self.image_width, self.image_height))
         self.image_tk = ImageTk.PhotoImage(resized_image)
         self.image_output.create_image(self.canvas_width / 2, self.canvas_height / 2, image=self.image_tk )
+
+    def export_image(self, name, file, path):
+        pass
 App()

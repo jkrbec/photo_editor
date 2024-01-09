@@ -15,6 +15,7 @@ class Menu(ctk.CTkTabview):
         PositionFrame(self.tab("Position"), pos_vars)
         ColorFrame(self.tab("Color"), color_vars)
         EffectFrame(self.tab("Effects"), effect_vars)
+        ExportFrame(self.tab("Export"))
 class PositionFrame(ctk.CTkFrame):
     def __init__(self, parent, pos_vars):
         super().__init__(master = parent,
@@ -60,3 +61,18 @@ class EffectFrame(ctk.CTkFrame):
                      (effect_vars['effect'], EFFECT_OPTIONS[0]),
                      (effect_vars['blur'], BLUR_DEFAULT),
                      (effect_vars['contrast'], CONTRAST_DEFAULT))
+
+class ExportFrame(ctk.CTkFrame):
+    def __init__(self, parent):
+        super().__init__(master = parent,
+                         fg_color="transparent",)
+        self.pack(expand = True, fill = "both")
+
+        #data
+        self.name_string = ctk.StringVar()
+        self.file_string = ctk.StringVar(value="jpg")
+        self.path_string = ctk.StringVar()
+
+        #widgets
+        FileNamePanel(self, self.name_string, self.file_string)
+        FilePathPanel(self, self.path_string)
